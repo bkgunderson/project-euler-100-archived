@@ -41,4 +41,6 @@ const sumOfElements = (arr) => {
 };
 
 // sum the multiples of the numbers provided that are less than the upper limit
-sumOfElements(arrayOfMultiples(generateSetOfNumbersBelow(1000), [3, 5]));
+console.log(
+  sumOfElements(arrayOfMultiples(generateSetOfNumbersBelow(1000), [3, 5]))
+);

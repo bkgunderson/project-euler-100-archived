@@ -2,15 +2,6 @@
 //
 // What is the largest prime factor of the number 600851475143 ?
 
-// const checkIsPrime = (num) => {
-//   for (var i = num - 1; i > 1; i--) {
-//     if (num % i === 0) {
-//       return false;
-//     }
-//   }
-//   return true;
-// };
-
 const findLargestPrimeFactor = (num) => {
   var factors = [];
   var product = num;
