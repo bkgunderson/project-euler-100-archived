@@ -40,5 +40,6 @@ const pythagTripletProductFromSum = (sum) => {
 };
 
 console.log(pythagTripletProductFromSum(12)); // expected result: 60
-// console.log(pythagTripletProductFromSum(24)); // expected result: 480
-// console.log(pythagTripletProductFromSum(1000)); // expected result: 31875000
+console.log(pythagTripletProductFromSum(24)); // expected result: 480
+console.log(pythagTripletProductFromSum(1000)); // expected result: 31875000
+console.log(pythagTripletProductFromSum(1406)); // expected result: 17335980
