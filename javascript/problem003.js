@@ -25,4 +25,4 @@ const findLargestPrimeFactor = (num) => {
   return factors[factors.length - 1];
 };
 
-console.log(findLargestPrimeFactor(600851475143));
+console.log(findLargestPrimeFactor(600851475143)); // expected output: 6857

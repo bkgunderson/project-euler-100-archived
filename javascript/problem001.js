@@ -1,19 +1,9 @@
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 //
 // Find the sum of all the multiples of 3 or 5 below 1000.
+// expected result: 233168
 
-const generateSetOfNumbersBelow = (upperLimit) => {
-  var arr = [];
-  // if upper limit is not positive, send error to console
-  if (upperLimit < 1) {
-    console.error("Invalid upper limit provided.");
-  }
-  // push every natural number less than the upper limit provided to an array
-  for (var i = 1; i < upperLimit; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+const { generateSetOfNumbersBelow } = require("./lib/common_tools");
 
 const checkMultipleMultiples = (number, arr) => {
   var isMultiple = false;
@@ -43,4 +33,4 @@ const sumOfElements = (arr) => {
 // sum the multiples of the numbers provided that are less than the upper limit
 console.log(
   sumOfElements(arrayOfMultiples(generateSetOfNumbersBelow(1000), [3, 5]))
-);
+); // expected result: 233168

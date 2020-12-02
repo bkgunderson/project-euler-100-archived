@@ -2,26 +2,10 @@
 
 // Find the sum of all the primes below two million.
 
-// this fcn is from problem005.js, modified since need to identify 1 as non-prime
-const checkIsPrime = (num) => {
-  if (num === 1) {
-    return false;
-  }
-  for (var i = 3; i < num; i += 2) {
-    if (num % i === 0) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const arrayOfNaturalNumsLessThan = (upperLimit) => {
-  var arr = [];
-  for (var i = 1; i < upperLimit; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+const {
+  arrayOfNaturalNumsLessThan,
+  checkIsPrime,
+} = require("./lib/common_tools");
 
 const sumPrimesBelowNum = (upperLimit) => {
   // get array of all numbers below upperLimit
@@ -40,6 +24,7 @@ const sumPrimesBelowNum = (upperLimit) => {
     .filter((e) => e % 37 !== 0 || e === 37)
     .filter((f) => f % 41 !== 0 || f === 41)
     .filter((g) => g % 43 !== 0 || g === 43);
+  // curious about how the addition of filters decreases the array to check
   console.log(arrToCheck.length);
   // get array of primes below upperLimit
   var primesToSum = arrToCheck.filter((x) => checkIsPrime(x));

@@ -12,29 +12,20 @@ const pythagTripletProductFromSum = (sum) => {
   c = sum - (a + b);
   while (a < b && b < c) {
     while (a ** 2 + b ** 2 < c ** 2 && a + b + c === sum) {
-      if (Math.sqrt(a ** 2 + b ** 2) == c) {
-        console.log(a, b, c, "in the loop");
-        return a * b * c;
-      } else if (a ** 2 + b ** 2 < c ** 2) {
+      if (a ** 2 + b ** 2 < c ** 2) {
         b++;
         c = sum - (a + b);
       }
     }
     if (Math.sqrt(a ** 2 + b ** 2) === c && a + b + c <= sum) {
-      console.log(a, b, c, "before reset");
       return a * b * c;
     }
     a++;
     b = Math.round(sum / 3);
     c = sum - (a + b);
     if (Math.sqrt(a ** 2 + b ** 2) === c && a + b + c <= sum) {
-      console.log(a, b, c, "after reset");
       return a * b * c;
     }
-  }
-  if (Math.sqrt(a ** 2 + b ** 2) === c && a + b + c <= sum) {
-    console.log(a, b, c, "at teh end");
-    return a * b * c;
   }
   return "no success!";
 };

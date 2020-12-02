@@ -1,7 +1,12 @@
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 //
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+//
+// expected result: 232792560
 
+const { generateSetOfNumbersBelow } = require("./lib/common_tools");
+
+// leave this here for now because using the common_tools fcn at this point is a breaking change - 20201202
 const checkIsPrime = (num) => {
   for (var i = num - 1; i > 1; i--) {
     if (num % i === 0) {
@@ -9,14 +14,6 @@ const checkIsPrime = (num) => {
     }
   }
   return true;
-};
-
-const arrayOfNaturalNumsLessThan = (largest) => {
-  var arr = [];
-  for (var i = 1; i <= largest; i++) {
-    arr.push(i);
-  }
-  return arr;
 };
 
 // this returns an object with the primes of the array as keys and number 1 as values
@@ -34,10 +31,10 @@ const objPrimeFactors = (arr) => {
 };
 
 const smallestMultiple = (num) => {
-  var factorsObject = objPrimeFactors(arrayOfNaturalNumsLessThan(num));
+  var factorsObject = objPrimeFactors(generateSetOfNumbersBelow(num + 1));
   // { 2: 1, 3: 1, 5: 1, 7: 1 }
   // console.log(factorsObject, " factorsObject");
-  let arrComposites = arrayOfNaturalNumsLessThan(num).filter(
+  let arrComposites = generateSetOfNumbersBelow(num + 1).filter(
     (x) => !checkIsPrime(x)
   );
   // [ 4, 6, 8, 9, 10 ]
@@ -45,7 +42,9 @@ const smallestMultiple = (num) => {
   let arrCompositesFactored = [];
 
   arrComposites.forEach((x) =>
-    arrCompositesFactored.push(objPrimeFactors(arrayOfNaturalNumsLessThan(x)))
+    arrCompositesFactored.push(
+      objPrimeFactors(generateSetOfNumbersBelow(x + 1))
+    )
   );
   // here is an array of objects, each containing keys of the primes less than a composite, representative of all composites <= the original upper limit
   // [ { 2: 1, 3: 1 }, { 2: 1, 3: 1, 5: 1 }, { 2: 1, 3: 1, 5: 1, 7: 1 }, { 2: 1, 3: 1, 5: 1, 7: 1 }, { 2: 1, 3: 1, 5: 1, 7: 1 } ]
