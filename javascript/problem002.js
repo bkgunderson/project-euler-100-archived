@@ -3,22 +3,16 @@
 // 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 //
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+// expected result: 4613732
 
-const { checkIsEven } = require("./lib/common_tools");
-
-const fibSeqLessThanLimit = (upperLimit) => {
-  var sequence = [1, 2];
-  var i = 0;
-  while (sequence[i] + sequence[i + 1] < upperLimit) {
-    sequence.push(sequence[i] + sequence[i + 1]);
-    i++;
-  }
-  return sequence;
-};
+const {
+  checkIsEven,
+  fibSeqLessThanLimit,
+  sumOfElements,
+} = require("./lib/common_tools");
 
 const sumEvenTerms = (arr) => {
-  var evenArray = arr.filter((x) => checkIsEven(x));
-  return evenArray.reduce((acc, b) => acc + b);
+  return sumOfElements(arr.filter((x) => checkIsEven(x)));
 };
 
-console.log(sumEvenTerms(fibSeqLessThanLimit(4000000))); // expected result: 4613732
+console.log(sumEvenTerms(fibSeqLessThanLimit(4000000)), "4613732");

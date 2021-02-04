@@ -7,6 +7,7 @@
 
 // expected result: 871198282
 
+// change this to read in the data from the text file. Don't forget to sort!
 const arrFirstNames = [
   "MARY",
   "PATRICIA",
@@ -5171,7 +5172,9 @@ const arrFirstNames = [
   "DARELL",
   "BRODERICK",
   "ALONSO",
-].sort();
+];
+
+arrFirstNames.sort();
 
 let firstNameSum = 0;
 let runningTotal = 0;

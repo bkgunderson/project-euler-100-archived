@@ -13,29 +13,11 @@
 //     28: 1,2,4,7,14,28
 
 // We can see that 28 is the first triangle number to have over five divisors.
-
 // What is the value of the first triangle number to have over five hundred divisors?
+//
+// expected result: 76576500
 
-// this fcn is originally from problem005.js, modified in problem012.js
-const checkIsPrime = (num) => {
-  if (num === 1) {
-    return false;
-  }
-  for (var i = 3; i < num; i += 2) {
-    if (num % i === 0) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const arrayOfNaturalNumsLessThanEqual = (upperLimit) => {
-  var arr = [];
-  for (var i = 1; i <= upperLimit; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+const { objPrimeFactors } = require("./lib/common_tools");
 
 const firstSevenTriangleNums = [
   { nth: 1, sum: 1, factors: [1] },
@@ -68,35 +50,6 @@ const firstSevenTriangleNums = [
 // 136 ~~ [1, 2, 4, 8, 17, 34, 68, 136] = 8
 // 2 ** 3, 17 ** 1 ~~ 4 * 2
 
-// this returns an object with primes as keys and exponents as values
-const objPrimeFactors = (target) => {
-  let objPrimes = {};
-  let currentPrime = 2;
-  let counter = 0;
-  let remQuotient = target;
-  // quotient goes through the process until it equals 1
-  // number 1 and primes might break it
-  while (currentPrime < target && remQuotient > 1) {
-    // divide the target number by a prime until remainder is !== 0
-    while (remQuotient % currentPrime === 0) {
-      remQuotient /= currentPrime;
-      counter++;
-    }
-    // number of times divided into target is the exponent for the prime
-    // add it to the object if it's non-zero
-    if (counter > 0) {
-      objPrimes[currentPrime] = counter;
-      counter = 0;
-    }
-    // find next prime number
-    currentPrime++;
-    while (!checkIsPrime(currentPrime)) {
-      currentPrime++;
-    }
-  }
-  return objPrimes;
-};
-
 // find the prime factorization, add one to all exponents, multiply resulting numbers
 // for example, 136 prime factors are: 2 ** 3, 17 ** 1
 // (3 + 1) * (1 + 1) = 8
@@ -119,10 +72,10 @@ const triangleNumDivisorCountAbove = (divisorCount) => {
     triNum += numToAdd;
     if (triangleNumDivisors(triNum) > highestTriNum) {
       highestTriNum = triangleNumDivisors(triNum);
-      console.log(triNum, objPrimeFactors(triNum));
+      // console.log(triNum, objPrimeFactors(triNum));
     }
   }
   return triNum;
 };
 
-console.log(triangleNumDivisorCountAbove(500)); // expected result: 76576500
+console.log(triangleNumDivisorCountAbove(500), "76576500"); // expected result: 76576500
