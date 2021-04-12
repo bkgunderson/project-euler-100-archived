@@ -46,6 +46,10 @@ const createArrayFromNumber = (num) => {
 const checkIsPrime = (num) => {
   if (num === 1) {
     return false;
+  } else if (num === 2) {
+    return true;
+  } else if (num % 2 === 0) {
+    return false;
   }
   for (var i = 3; i < num; i += 2) {
     if (num % i === 0) {
