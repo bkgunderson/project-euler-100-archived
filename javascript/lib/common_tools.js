@@ -51,7 +51,8 @@ const checkIsPrime = (num) => {
   } else if (num % 2 === 0) {
     return false;
   }
-  for (var i = 3; i < num; i += 2) {
+  // could one adjust the condition of this for loop to speed things up?
+  for (var i = 3; i < num / 2 + 1; i += 2) {
     if (num % i === 0) {
       return false;
     }
@@ -122,9 +123,7 @@ const objPrimeFactors = (target) => {
 
 const sumOfElements = (arr) => {
   // add all of the elements of the supplied array
-  return arr.reduce((acc, x) => {
-    return acc + x;
-  });
+  return arr.reduce((acc, x) => acc + x, 0);
 };
 
 module.exports = {
